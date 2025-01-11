@@ -1,0 +1,91 @@
+/* Home Title */
+.home-title {
+    font-size: 3.5rem;
+    margin-top: 5rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    color: #232f3e; /* Elegant dark blue */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Category Title */
+.category-title {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444; /* Subtle dark text */
+    font-weight: 500;
+}
+
+/* Category List Wrapper */
+#categoryList {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+    gap: 1rem; /* Space between cards */
+}
+
+/* Category Item Cards */
+.category-item {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: linear-gradient(135deg, #f3f4f6, #d9e4ec); /* Light to soft dark gradient */
+    width: 150px; /* Match your original size */
+    min-width: 135px; /* Consistent size */
+    height: 100px; /* Original height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #232f3e; /* Dark blue text for contrast */
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Category Items */
+.category-item:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    background: linear-gradient(135deg, #d9e4ec, #b0c4de); /* Darker gradient on hover */
+    cursor: pointer;
+}
+
+/* Category Links */
+.category-item a {
+    text-decoration: none;
+    color: #232f3e; /* Dark text */
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.category-item a:hover {
+    text-decoration: underline; /* Subtle hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #categoryList {
+        gap: 1rem; /* Adjust spacing for smaller screens */
+        justify-content: center;
+    }
+
+    .category-item {
+        width: 140px;
+        height: 90px;
+        font-size: 0.9rem;
+    }
+
+    .home-title {
+        font-size: 2.5rem;
+    }
+
+    .category-title {
+        font-size: 1.3rem;
+    }
+}
