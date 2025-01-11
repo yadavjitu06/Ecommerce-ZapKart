@@ -2,8 +2,8 @@
 import './App.css'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import Error from './components/Pages/Error/Error'
-import Home from './components/Pages/Home/Home'
+
+import MainRoutes from './routes/MainRoutes'
 
 function App() {
   
@@ -18,8 +18,8 @@ function App() {
         container="md"
       />
 
-      <Home/>
-      {/* <Error/> */}
+      
+      <MainRoutes/>
 
      
 
@@ -29,4 +29,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
