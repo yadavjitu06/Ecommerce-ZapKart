@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 
 // CSS imports
 import './ProductBox.css';
-function ProductBox({ productImage, name, price, }) {
+
+function ProductBox({ productImage, name, price,productId }) {
+
+    
 
     return (
-        <Link  
+        <Link  to={`/products/${productId}`}
             href="productDetails.html"  
             className="product-item text-decoration-none">
             <div className="product-img">

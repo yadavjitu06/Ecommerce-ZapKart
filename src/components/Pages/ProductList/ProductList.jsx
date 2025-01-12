@@ -5,7 +5,10 @@ import FilterProducts from "../../FilterProduct/FilterProduct";
 import "./ProductList.css";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-import { getAllProducts, getAllProductsByCategory } from "../../../apis/fakeStoreProdApis";
+import {
+  getAllProducts,
+  getAllProductsByCategory,
+} from "../../../apis/fakeStoreProdApis";
 
 function ProductList() {
   const [productList, setProductList] = useState(null);
@@ -28,18 +31,17 @@ function ProductList() {
     downloadProducts(query.get("category")); // Fixed the extra space
   }, [query.get("category")]); // Added `query` as a dependency
 
-  
-
   return (
     <div className="container">
       <div className="row">
         <h2 className="product-list-title text-center">All Products</h2>
         <div className="product-list-wrapper d-flex flex-row">
-          <FilterProducts  />
+          <FilterProducts />
           <div className="product-list-box" id="productList">
             {productList &&
               productList.map((product) => (
                 <ProductBox
+                productId={product.id}
                   key={product.id}
                   name={product.title}
                   price={product.price}
