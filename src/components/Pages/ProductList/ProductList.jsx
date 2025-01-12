@@ -1,21 +1,44 @@
 // CSS import
-import FilterProduct from "../../FilterProduct/FilterProduct";
+import { useEffect, useState } from "react";
 import ProductBox from "../../ProductBox/ProductBox";
+import FilterProducts from '../../FilterProduct/FilterProduct'
 import "./ProductList.css";
-
-// Component import
+import axios from "axios";
 
 function ProductList() {
+  const [productList, setProductList] = useState(null);
+
+  async function downloadProducts() {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      setProductList(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
+
+  useEffect(() => {
+    downloadProducts();
+  }, []);
+
   return (
     <div className="container">
       <div className="row">
         <h2 className="product-list-title text-center">All Products</h2>
         <div className="product-list-wrapper d-flex flex-row">
-
-            <FilterProduct/>
-          {/* list of products */}
+          
+        <FilterProducts/>
           <div className="product-list-box" id="productList">
-           <ProductBox productImage={productImage} name={"dummy"} price={1000}/>
+            {productList &&
+              productList.map((product) => (
+                <ProductBox
+                  key={product.id}
+                  name={product.title}
+                  price={product.price}
+                  productImage={product.image}
+                />
+              ))}
           </div>
         </div>
       </div>
