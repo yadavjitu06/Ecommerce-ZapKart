@@ -3,6 +3,9 @@ import Home from '../components/Pages/Home/Home';
 import Error from '../components/Pages/Error/Error';
 import ProductList from '../components/Pages/ProductList/ProductList';
 import ProductDetails from '../components/Pages/ProductDetails/ProductDetails';
+ 
+import Login from '../components/Pages/Authentication/Login';
+import Signup from '../components/Pages/Authentication/SignUp';
 
 
 
@@ -13,6 +16,8 @@ function MainRoutes(){
             <Route path="/" element={<Home/>} />
             <Route path="/products" element={<ProductList/>}/>
             <Route path="/productDetails/:id" element={<ProductDetails/>}/>
+            <Route path="/signin" element={<Login/>}/>
+            <Route path="/Signup" element={< Signup/>}/>
             <Route path="*"  element={<Error/>} />
         </Routes>
         </>
