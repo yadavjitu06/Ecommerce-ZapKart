@@ -1,16 +1,22 @@
 // CSS import
 import { useEffect, useState } from "react";
 import ProductBox from "../../ProductBox/ProductBox";
-import FilterProducts from '../../FilterProduct/FilterProduct'
+import FilterProducts from "../../FilterProduct/FilterProduct";
 import "./ProductList.css";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import { getAllProducts, getAllProductsByCategory } from "../../../apis/fakeStoreProdApis";
 
 function ProductList() {
   const [productList, setProductList] = useState(null);
+  const [query] = useSearchParams();
 
-  async function downloadProducts() {
+  async function downloadProducts(category) {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const downloadurl = category
+        ? getAllProductsByCategory(category)
+        : getAllProducts();
+      const response = await axios.get(downloadurl);
       setProductList(response.data);
       console.log(response.data);
     } catch (error) {
@@ -19,16 +25,17 @@ function ProductList() {
   }
 
   useEffect(() => {
-    downloadProducts();
-  }, []);
+    downloadProducts(query.get("category")); // Fixed the extra space
+  }, [query]); // Added `query` as a dependency
+
+  
 
   return (
     <div className="container">
       <div className="row">
         <h2 className="product-list-title text-center">All Products</h2>
         <div className="product-list-wrapper d-flex flex-row">
-          
-        <FilterProducts/>
+          <FilterProducts updateCategory={updateCategory} />
           <div className="product-list-box" id="productList">
             {productList &&
               productList.map((product) => (

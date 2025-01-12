@@ -29,7 +29,7 @@ function Home() {
           <CategoryItem itemName="All products" />
           {categories &&
             categories.map((category) => (
-              <CategoryItem itemName={category} key={category} />
+              <CategoryItem itemName={category} key={category} filter={category} />
             ))}
         </div>
         <div className="category-title text-center">
