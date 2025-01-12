@@ -26,7 +26,7 @@ function ProductList() {
 
   useEffect(() => {
     downloadProducts(query.get("category")); // Fixed the extra space
-  }, [query]); // Added `query` as a dependency
+  }, [query.get("category")]); // Added `query` as a dependency
 
   
 
@@ -35,7 +35,7 @@ function ProductList() {
       <div className="row">
         <h2 className="product-list-title text-center">All Products</h2>
         <div className="product-list-wrapper d-flex flex-row">
-          <FilterProducts updateCategory={updateCategory} />
+          <FilterProducts  />
           <div className="product-list-box" id="productList">
             {productList &&
               productList.map((product) => (

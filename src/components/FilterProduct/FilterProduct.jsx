@@ -1,9 +1,22 @@
 // CSS imports
+
 import "./FilterProduct.css";
+
+import useCategory from "../../hooks/useCategory";
+import { useNavigate } from "react-router-dom";
 
 function FilterProduct() {
   const minPriceOptions = [0, 10, 20, 50, 100, 200];
   const maxPriceOptions = [0, 10, 20, 50, 100, 200, 1000];
+
+
+  const navigate = useNavigate()
+
+  const [categories]=useCategory();
+  function handleCategoryNavigate(category){
+    navigate(`/products?category=${category}`)
+
+  }
 
   return (
     <div className="product-list-sidebar d-flex flex-column">
@@ -20,9 +33,13 @@ function FilterProduct() {
       <div className="sidebar-title fw-bold">Categories</div>
       <div id="categoryList">
         {/* <!-- will be populated by JS --> */}
-        <a className="d-flex  text-deoration-none">Electronics</a>
-        <a className="d-flex  text-deoration-none">Kitchenware</a>
-        <a className="d-flex  text-deoration-none">Medecine</a>
+
+        {categories &&
+          categories.map((category) => (
+            <a onClick={()=>handleCategoryNavigate(category)} key={category} className="d-flex text-decoration-none">
+              {category}
+            </a>
+          ))}
       </div>
 
       <div className="sidebar-title">Filter by price</div>
