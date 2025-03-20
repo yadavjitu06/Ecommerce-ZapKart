@@ -1,4 +1,6 @@
 // CSS imports
+import { Link } from 'react-router-dom';
+import Auth from '../../Auth/Auth';
 import './Auth.css';
 // lubrary imports
 
@@ -21,7 +23,7 @@ function Login() {
             </div>
             <div className="login-wrapper" id="loginForm">
                 <h4 className="text-center">Login</h4>
-                <Auth onSubmit={onAuthFormSubmit} ref={authRef} />
+                <Auth  />
                 <div className="signup-btn text-center" id="showSignupBtn">
                     <Link  to="/signup">
                      Donot have an Account? Sign Up Here
